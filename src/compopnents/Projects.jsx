@@ -1,7 +1,14 @@
-import { FaGithub, FaCuttlefish, FaCode, FaServer, FaCube } from "react-icons/fa";
+import {
+  FaGithub,
+  FaCuttlefish,
+  FaCode,
+  FaServer,
+  FaCube,
+} from "react-icons/fa";
 import opneGlGif from "../assets/projects/opengl-demo.gif";
 import more from "../assets/projects/more-meme.jpg";
 import billy from "../assets/projects/billy.gif";
+import ko from "../assets/projects/ko.gif";
 
 // Projects data with tag objects
 const projectsData = [
@@ -21,7 +28,7 @@ const projectsData = [
       { label: "Shader", icon: <FaServer /> },
     ],
   },
-  
+
   {
     title: "Billy Protocol",
     description:
@@ -38,21 +45,37 @@ const projectsData = [
       { label: "Puzzle", icon: <FaServer /> },
     ],
   },
+  {
+    title: "K.O. Play Here",
+    description:
+      "A first-person parkour game inspired by One Punch Man and early PlayStation games. Developed fast-paced mechanics including wall-running and combat, implemented momentum-based movement physics, and designed retro-styled environments and character assets.",
+    image: ko,
+    github: "#", // replace with GitHub link if available
+    timeline: "Jul 2024",
+    status: "Completed",
+    tags: [
+      { label: "Unity3D", icon: <FaCube /> },
+      { label: "C#", icon: <FaCode /> },
+      { label: "Parkour", icon: <FaCuttlefish /> },
+      { label: "First-Person", icon: <FaCube /> },
+      { label: "Combat", icon: <FaServer /> },
+    ],
+  },
+
 
   {
-  title: "More Projects Coming Soon",
-  description:
-    "Stay tuned! I’m working on adding more exciting projects to showcase here.",
-  image: more, // optional: a placeholder image
-  github: "#", // no link yet
-  timeline: "Ongoing",
-  status: "In Progress",
-  tags: [
-    { label: "More to Come", icon: <FaCode /> },
-    { label: "Exciting", icon: <FaCube /> },
-  ],
-},
-
+    title: "More Projects Coming Soon",
+    description:
+      "Stay tuned! I’m working on adding more exciting projects to showcase here.",
+    image: more, // optional: a placeholder image
+    github: "#", // no link yet
+    timeline: "Ongoing",
+    status: "In Progress",
+    tags: [
+      { label: "More to Come", icon: <FaCode /> },
+      { label: "Exciting", icon: <FaCube /> },
+    ],
+  },
 ];
 
 const Projects = () => {
@@ -65,8 +88,17 @@ const Projects = () => {
         {projectsData.map((project, idx) => (
           <div
             key={idx}
-            className="bg-white p-6 rounded-xl shadow flex flex-col cursor-pointer
-                       transition-transform hover:animate-[bounceCard_0.8s_ease-out] hover:shadow-2xl"
+            className={`
+    bg-white p-6 rounded-xl shadow flex flex-col cursor-pointer
+    transition-transform hover:animate-[bounceCard_0.8s_ease-out]
+    ${
+      project.status.toLowerCase() === "completed"
+        ? "hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.7)]"
+        : project.status.toLowerCase() === "in progress"
+        ? "hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.7)]"
+        : ""
+    }
+  `}
           >
             {/* Project image */}
             <img
@@ -78,12 +110,32 @@ const Projects = () => {
             {/* Project info */}
             <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
             <p className="text-gray-500 text-sm mb-2">
-              <span className="font-semibold">Timeline:</span> {project.timeline}
+              <span className="font-semibold">Timeline:</span>{" "}
+              {project.timeline}
             </p>
-            <p className="text-gray-500 text-sm mb-2">
-              <span className="font-semibold">Status:</span> {project.status}
+            <p className="text-sm mb-2 flex items-center gap-2">
+              <span className="font-semibold">Status:</span>
+              <span
+                className={`
+      px-3 py-1 rounded-full flex items-center gap-2 text-black text-xs font-medium
+      ${project.status.toLowerCase() === "completed" ? "bg-green-500" : ""}
+      ${project.status.toLowerCase() === "in progress" ? "bg-yellow-500" : ""}
+    `}
+              >
+                <span
+                  className={`
+        w-2 h-2 rounded-full
+        ${project.status.toLowerCase() === "completed" ? "bg-green-700" : ""}
+        ${project.status.toLowerCase() === "in progress" ? "bg-yellow-700" : ""}
+      `}
+                />
+                {project.status}
+              </span>
             </p>
-            <p className="mb-2 text-gray-700 flex-grow">{project.description}</p>
+
+            <p className="mb-2 text-gray-700 flex-grow">
+              {project.description}
+            </p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-2">
