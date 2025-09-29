@@ -6,3 +6,8 @@
   50%  { transform: scale(1.05); }  /* shrink slightly */
   100% { transform: scale(1); }     /* settle back */
 }
+/* Hide scrollbar but keep scrolling */
+
+body::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Edge */
+}
