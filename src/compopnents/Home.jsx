@@ -37,7 +37,7 @@ const Home = () => {
       />
 
       {/* Overlay for contrast */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-blue-950/40"></div>
 
       {/* Page Transition Overlay */}
       <PageTransition trigger={transition} />
