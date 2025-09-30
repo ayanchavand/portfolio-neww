@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { PERSONAL } from "../constants";
 import PageTransition from "./PageTransition";
 
@@ -32,10 +33,22 @@ const Navbar = () => {
 
       <nav className="fixed w-full z-50 bg-gray-900/95 backdrop-blur-md shadow-md">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Left: Name */}
-          <div className="text-2xl font-bold text-white tracking-wide hover:text-blue-400 transition-colors cursor-pointer">
+          {/* Left: Animated Name */}
+          <motion.div
+            className="text-2xl font-bold text-white tracking-wide cursor-pointer"
+            initial={{ y: 0, rotateX: 0 }}
+            whileHover={{
+              y: [0, -15, 0], // pops up then drops
+              rotateX: [0, 25, 0], // flip effect
+              color: "#60A5FA", // Tailwind blue-400
+              transition: {
+                duration: 0.6,
+                ease: [0.68, -0.55, 0.27, 1.55], // springy feel
+              },
+            }}
+          >
             {PERSONAL.name}
-          </div>
+          </motion.div>
 
           {/* Right: Links */}
           <div className="hidden md:flex space-x-10">

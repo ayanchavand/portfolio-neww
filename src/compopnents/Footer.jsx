@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub, FaEnvelope, FaGamepad } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope, FaGamepad, FaYoutube} from "react-icons/fa";
 import { NAV_LINKS, PERSONAL } from "../constants";
 
 const Footer = () => {
@@ -44,6 +44,14 @@ const Footer = () => {
           >
             <FaGamepad />
           </a>
+           <a
+    href={PERSONAL.youtube} // make sure you have this in your PERSONAL object
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-red-500 transform hover:scale-110 transition"
+  >
+    <FaYoutube size={24} />
+  </a>
         </div>
       </div>
 

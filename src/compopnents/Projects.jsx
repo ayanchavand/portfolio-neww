@@ -9,6 +9,7 @@ import opneGlGif from "../assets/projects/opengl-demo.gif";
 import more from "../assets/projects/more-meme.jpg";
 import billy from "../assets/projects/billy.gif";
 import ko from "../assets/projects/ko.gif";
+import discat from "../assets/projects/discat.jpg";
 
 // Projects data with tag objects
 const projectsData = [
@@ -19,9 +20,10 @@ const projectsData = [
     image: opneGlGif,
     github: "https://github.com/ayanchavand/mini-gl-renderer",
     timeline: "Sep 2025",
-    status: "in progress",
+    status: "In Progress",
     tags: [
       { label: "C++", icon: <FaCode /> },
+      { label: "OOPs", icon: <FaCode /> },
       { label: "OpenGL", icon: <FaCube /> },
       { label: "3D", icon: <FaCube /> },
       { label: "Graphics", icon: <FaCuttlefish /> },
@@ -61,6 +63,22 @@ const projectsData = [
       { label: "Combat", icon: <FaServer /> },
     ],
   },
+  {
+  title: "DisCat",
+  description:
+    "DisCat is an Android app built with Kotlin that fetches cat and dog images from multiple APIs. It uses Glide for smooth image loading, OkHttp for reliable networking, and Gson for parsing API responses, showcasing modern Android development with a clean, efficient user experience.",
+  image: discat, // replace with your actual image import
+  github: "https://github.com/ayanchavand/discat", // replace with actual repo link
+  timeline: "Jan 2024",
+  status: "Completed",
+  tags: [
+    { label: "Kotlin", icon: <FaCode /> },
+    { label: "Android", icon: <FaCube /> },
+    { label: "Glide", icon: <FaServer /> },
+    { label: "MVVM", icon: <FaServer /> },
+    { label: "Gson", icon: <FaServer /> },
+  ],
+},
 
 
   {

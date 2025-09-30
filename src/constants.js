@@ -7,6 +7,7 @@ export const PERSONAL = {
   linkedin: "https://www.linkedin.com/in/ayanchavand/",
   github: "https://github.com/ayanchavand",
   itchio: "https://ayanchavand.itch.io/",
+  youtube: "https://www.youtube.com/@TheBuggedOut"
 };
 
 // Navbar / sections

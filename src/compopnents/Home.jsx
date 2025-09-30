@@ -42,17 +42,21 @@ const Home = () => {
       {/* Page Transition Overlay */}
       <PageTransition trigger={transition} />
 
-      {/* Floating accent dots */}
-      <motion.div
-        className="absolute w-2 h-2 bg-white rounded-full top-20 left-1/3"
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", delay: 0.5 }}
-      />
-      <motion.div
-        className="absolute w-2 h-2 bg-white rounded-full top-1/2 left-2/3"
-        animate={{ y: [0, 15, 0] }}
-        transition={{ duration: 3, repeat: Infinity, repeatType: "mirror", delay: 1 }}
-      />
+     {/* Floating accent dots */}
+<motion.div
+  className="absolute w-2 h-2 bg-white rounded-full top-20 left-1/3"
+  style={{ boxShadow: "0 0 40px 10px rgba(255,255,255,0.8)" }} // much stronger glow
+  animate={{ y: [0, -20, 0] }}
+  transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", delay: 0.5 }}
+/>
+<motion.div
+  className="absolute w-2 h-2 bg-white rounded-full top-1/2 left-2/3"
+  style={{ boxShadow: "0 0 30px 8px rgba(255,255,255,0.8)" }} // stronger glow
+  animate={{ y: [0, 15, 0] }}
+  transition={{ duration: 3, repeat: Infinity, repeatType: "mirror", delay: 1 }}
+/>
+
+
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center h-full gap-4">
