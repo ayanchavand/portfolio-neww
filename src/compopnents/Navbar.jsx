@@ -1,23 +1,52 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { PERSONAL } from "../constants";
 import PageTransition from "./PageTransition";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [transition, setTransition] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
 
-  // Generic handler for any link
+  // Detect scroll for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = links.map(link => document.querySelector(link.href));
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(links[i].href);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleLinkClick = (href) => {
-    setTransition(true); // start overlay
+    setTransition(true);
     setTimeout(() => {
       const section = document.querySelector(href);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
-      setTransition(false); // remove overlay
-      setIsOpen(false); // close mobile menu
-    }, 500); // match your PageTransition duration
+      setTransition(false);
+      setIsOpen(false);
+    }, 500);
   };
 
   const links = [
@@ -31,9 +60,18 @@ const Navbar = () => {
     <>
       {transition && <PageTransition />}
 
-      <nav className="fixed w-full z-50 bg-gray-900/95 backdrop-blur-md shadow-md">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Left: Animated Name */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-gray-900/95 backdrop-blur-lg shadow-lg py-3"
+            : "bg-gray-900/75 backdrop-blur-md shadow-md py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+         {/* Left: Animated Name */}
           <motion.div
             className="text-2xl font-bold text-white tracking-wide cursor-pointer"
             initial={{ y: 0, rotateX: 0 }}
@@ -64,54 +102,76 @@ const Navbar = () => {
             ))}
           </div>
 
+
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              className="text-gray-200 focus:outline-none"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
+          <motion.button
+            className="md:hidden text-gray-200 focus:outline-none relative z-50 p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-5 flex flex-col justify-between">
+              <motion.span
+                animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-0.5 bg-current rounded-full origin-center"
+              />
+              <motion.span
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-0.5 bg-current rounded-full"
+              />
+              <motion.span
+                animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-0.5 bg-current rounded-full origin-center"
+              />
+            </div>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-gray-900">
-            {links.map((link, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleLinkClick(link.href)}
-                className="block w-full text-left px-6 py-4 text-gray-200 font-medium hover:text-blue-400 transition"
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
-        )}
-      </nav>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-800 overflow-hidden"
+            >
+              <div className="px-4 py-2 space-y-1">
+                {links.map((link, idx) => (
+                  <motion.button
+                    key={idx}
+                    onClick={() => handleLinkClick(link.href)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all ${
+                      activeSection === link.href
+                        ? "bg-blue-600/20 text-white border border-blue-400/30"
+                        : "text-gray-300 hover:bg-gray-800/50 hover:text-white"
+                    }`}
+                  >
+                    <span className="flex items-center justify-between">
+                      {link.name}
+                      {activeSection === link.href && (
+                        <motion.span
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-2 h-2 bg-blue-400 rounded-full"
+                        />
+                      )}
+                    </span>
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </>
   );
 };
