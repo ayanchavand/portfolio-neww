@@ -4,6 +4,7 @@ import { PERSONAL } from "../constants";
 import bgVideo from "../assets/projects/demo-reel.mp4";
 import PageTransition from "./PageTransition";
 import Resume from "../assets/misc/AyanChavand.pdf";
+import { FaChevronDown } from "react-icons/fa";
 
 const Home = () => {
   const [transition, setTransition] = useState(false);
@@ -16,7 +17,7 @@ const Home = () => {
         projectsSection.scrollIntoView({ behavior: "smooth" });
       }
       setTransition(false);
-    }, 500); // match PageTransition duration
+    }, 500);
   };
 
   return (
@@ -31,88 +32,131 @@ const Home = () => {
         autoPlay
         loop
         muted
+        playsInline
         initial={{ scale: 1 }}
         animate={{ scale: 1.05 }}
         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
       />
 
-      {/* Overlay for contrast */}
-      <div className="absolute top-0 left-0 w-full h-full bg-blue-950/40"></div>
+      {/* Enhanced gradient overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-950/50 via-blue-950/40 to-gray-900/60"></div>
 
       {/* Page Transition Overlay */}
       <PageTransition trigger={transition} />
 
-     {/* Floating accent dots */}
-<motion.div
-  className="absolute w-2 h-2 bg-white rounded-full top-20 left-1/3"
-  style={{ boxShadow: "0 0 40px 10px rgba(255,255,255,0.8)" }} // much stronger glow
-  animate={{ y: [0, -20, 0] }}
-  transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", delay: 0.5 }}
-/>
-<motion.div
-  className="absolute w-2 h-2 bg-white rounded-full top-1/2 left-2/3"
-  style={{ boxShadow: "0 0 30px 8px rgba(255,255,255,0.8)" }} // stronger glow
-  animate={{ y: [0, 15, 0] }}
-  transition={{ duration: 3, repeat: Infinity, repeatType: "mirror", delay: 1 }}
-/>
-
-
+      {/* Improved floating accent dots with varied sizes */}
+      <motion.div
+        className="absolute w-3 h-3 bg-white rounded-full top-20 left-1/4 hidden md:block"
+        style={{ boxShadow: "0 0 40px 10px rgba(255,255,255,0.6)" }}
+        animate={{ y: [0, -25, 0], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 5, repeat: Infinity, repeatType: "mirror", delay: 0.5 }}
+      />
+      <motion.div
+        className="absolute w-2 h-2 bg-blue-300 rounded-full top-1/3 right-1/4 hidden md:block"
+        style={{ boxShadow: "0 0 30px 8px rgba(147, 197, 253, 0.6)" }}
+        animate={{ y: [0, 20, 0], opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", delay: 1 }}
+      />
+      <motion.div
+        className="absolute w-2.5 h-2.5 bg-white rounded-full bottom-1/3 left-1/3 hidden md:block"
+        style={{ boxShadow: "0 0 35px 9px rgba(255,255,255,0.5)" }}
+        animate={{ y: [0, -15, 0], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 4.5, repeat: Infinity, repeatType: "mirror", delay: 1.5 }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center h-full gap-4">
-        {/* Animated Name */}
+      <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center h-full gap-6 max-w-5xl mx-auto">
+        {/* Animated Name with better typography */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-6xl font-bold mb-4 text-white"
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-5xl sm:text-6xl md:text-7xl font-bold mb-2 text-white tracking-tight"
         >
           {PERSONAL.name}
         </motion.h1>
 
-        {/* Animated Description */}
+        {/* Animated Description with better spacing */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl"
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-4 max-w-3xl leading-relaxed font-light"
         >
           {PERSONAL.description}
         </motion.p>
 
-        {/* Staggered Buttons */}
+        {/* Enhanced Buttons with better spacing and effects */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4"
           initial="hidden"
           animate="visible"
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.2 } },
+            visible: { transition: { staggerChildren: 0.15, delayChildren: 0.6 } },
           }}
         >
-          {/* See My Projects */}
+          {/* See My Projects - Primary CTA */}
           <motion.button
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(255,255,255,0.6)" }}
-            whileTap={{ scale: 0.95 }}
+            variants={{ 
+              hidden: { opacity: 0, y: 20 }, 
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } 
+            }}
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: "0 10px 30px rgba(255,255,255,0.3)",
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.98 }}
             onClick={handleProjectsClick}
-            className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold w-full sm:w-auto text-center"
+            className="group relative px-8 py-4 bg-white text-gray-900 rounded-xl font-semibold w-full sm:w-auto text-center overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
           >
-            See My Projects
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              See My Projects
+              <FaChevronDown className="text-sm group-hover:translate-y-1 transition-transform duration-300" />
+            </span>
+            {/* Animated background on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.button>
 
-          {/* Download Resume */}
+          {/* Download Resume - Secondary CTA */}
           <motion.a
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(255,255,255,0.6)" }}
-            whileTap={{ scale: 0.95 }}
+            variants={{ 
+              hidden: { opacity: 0, y: 20 }, 
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } 
+            }}
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: "0 10px 30px rgba(37, 99, 235, 0.4)",
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.98 }}
             href={Resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold w-full sm:w-auto text-center"
+            download
+            className="group relative px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold w-full sm:w-auto text-center overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
           >
-            Download Resume
+            <span className="relative z-10">Download Resume</span>
+            {/* Animated background on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.a>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2 cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+            onClick={handleProjectsClick}
+          >
+            <span className="text-xs uppercase tracking-widest text-white hidden sm:block">Scroll</span>
+            <FaChevronDown className="text-white text-sm" />
+          </motion.div>
         </motion.div>
       </div>
     </section>
