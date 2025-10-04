@@ -7,7 +7,7 @@ export const PERSONAL = {
   github: "https://github.com/ayanchavand",
   itchio: "https://ayanchavand.itch.io/",
   youtube: "https://www.youtube.com/@TheBuggedOut", // <- comma added
-  version: "v0.5.0"
+  version: "v0.5.2"
 };
 
 // Navbar / sections
