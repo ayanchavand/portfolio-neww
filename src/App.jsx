@@ -18,7 +18,6 @@ function App() {
    return (
      <div className="font-sans text-gray-800">
       <DefaultTransition duration={1500} />
-      <CustomCursor />
       <Navbar />
       <Home />
       <Experience />
