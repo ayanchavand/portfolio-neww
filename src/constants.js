@@ -1,4 +1,3 @@
-// Your personal info
 export const PERSONAL = {
   name: "Ayan Chavand",
   title: "Game Developer & Programmer",
@@ -7,7 +6,8 @@ export const PERSONAL = {
   linkedin: "https://www.linkedin.com/in/ayanchavand/",
   github: "https://github.com/ayanchavand",
   itchio: "https://ayanchavand.itch.io/",
-  youtube: "https://www.youtube.com/@TheBuggedOut"
+  youtube: "https://www.youtube.com/@TheBuggedOut", // <- comma added
+  version: "v0.5.0"
 };
 
 // Navbar / sections
