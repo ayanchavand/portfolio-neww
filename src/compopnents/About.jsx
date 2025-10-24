@@ -72,12 +72,10 @@ const About = () => {
         {/* Text content */}
         <div className="text-gray-800">
           <p className="mb-4">
-            Hi, I'm Ayan Chavand, a third-year Computer Science student passionate about building software and designing elegant technical solutions—whether it's in game development, low-level programming, or exploring cutting-edge technologies. I enjoy creating projects that are not only functional but also immersive, engaging, and fun to interact with.
+            Hi, I’m Ayan Chavand, a third-year Computer Science student passionate about building software and designing systems. I have experience across multiple tech stacks and disciplines, including game development, web, and native Android. I enjoy creating projects that are not only functional but also purposeful, immersive, and engaging to interact with.
           </p>
           <p>
-            I'm always learning, experimenting, and trying to push my skills further—whether it's programming, 
-            designing gameplay mechanics, or just diving into new concepts. My goal is to make projects that 
-            challenge me and leave an impact on anyone who interacts with them.
+While programming is my strongest suit, I also enjoy exploring creative outlets such as 3D art, creating YouTube videos, electronic music, and gaming.
           </p>
         </div>
       </div>

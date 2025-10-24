@@ -53,7 +53,7 @@ const Footer = () => {
           <h3 className="text-2xl font-bold mb-2 bg-white bg-clip-text text-transparent">
             {PERSONAL.name}
           </h3>
-          <p className="text-gray-400 italic">"HRs, please hire me." -me, unemployed, 2025.</p>
+          <p className="text-gray-400 italic">"Software nerd"</p>
         </div>
 
         {/* Right: Social Icons */}
