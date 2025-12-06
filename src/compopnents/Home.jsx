@@ -155,7 +155,6 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2 cursor-pointer opacity-60 hover:opacity-100"
-            onClick={handleProjectsClick}
           >
             <span className="text-xs uppercase tracking-widest text-white hidden sm:block">Scroll</span>
             <FaChevronDown className="text-white text-sm" />

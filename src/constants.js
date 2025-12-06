@@ -1,23 +1,22 @@
 export const PERSONAL = {
   name: "Ayan Chavand",
   title: "Game Developer & Programmer",
-  description: "I build software that challenge me and engage others.",
+  description: "Software Engineer & Game Developer",
   email: "ayan.chavand15@gmail.com",
   linkedin: "https://www.linkedin.com/in/ayanchavand/",
   github: "https://github.com/ayanchavand",
   itchio: "https://ayanchavand.itch.io/",
-  youtube: "https://www.youtube.com/@TheBuggedOut", // <- comma added
+  youtube: "https://www.youtube.com/@TheBuggedOut", 
   version: "v0.5.3"
 };
 
-// Navbar / sections
+
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
 ];
 
-// Projects data
 export const PROJECTS = [
   {
     title: "FPS Parkour Game",
