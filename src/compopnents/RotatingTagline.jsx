@@ -5,13 +5,12 @@ const taglines = [
   "Multi Stack Software Engineer🚀",
   "Game Developer 🎮",
   <>
-    Open Source Contributor {"[Godot Engine]"}
+    Open Source Contributor{" "}
+    <span className="max-sm:hidden">[Godot Engine]</span>
     <img
       src="https://raw.githubusercontent.com/godotengine/godot/master/icon.svg"
       alt="Godot"
-      width="40"
-      height="40"
-      className="inline-block relative top-[2px] ml-1 align-text-bottom "
+      className="inline-block relative top-[2px] ml-1 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6"
     />
   </>,
   "Philosophy & literature geek 📚",
