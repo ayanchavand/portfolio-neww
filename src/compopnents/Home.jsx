@@ -5,6 +5,7 @@ import bgVideo from "../assets/projects/demo-reel.mp4";
 import PageTransition from "./PageTransition";
 import Resume from "../assets/misc/AyanChavand.pdf";
 import { FaChevronDown } from "react-icons/fa";
+import RotatingTagline from "./RotatingTagline";
 
 const Home = () => {
   const [transition, setTransition] = useState(false);
@@ -104,14 +105,7 @@ const Home = () => {
           {PERSONAL.name}
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-4 max-w-3xl leading-relaxed font-light"
-        >
-          {PERSONAL.description}
-        </motion.p>
+        <RotatingTagline />
 
         <motion.div
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4"
