@@ -7,7 +7,7 @@ export const PERSONAL = {
   github: "https://github.com/ayanchavand",
   itchio: "https://ayanchavand.itch.io/",
   youtube: "https://www.youtube.com/@TheBuggedOut", 
-  version: "v0.5.5"
+  version: "v0.5.6"
 };
 
 export const NAV_LINKS = [
