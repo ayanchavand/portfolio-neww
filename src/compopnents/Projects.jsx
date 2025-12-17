@@ -11,93 +11,8 @@ import {
   FaLayerGroup,
   FaExternalLinkAlt
 } from "react-icons/fa";
-import opneGlGif from "../assets/projects/opengl-demo.gif";
-import more from "../assets/projects/more-meme.jpg";
-import billy from "../assets/projects/billy.gif";
-import ko from "../assets/projects/ko.gif";
-import discat from "../assets/projects/discat.jpg";
 
-// Projects data with tag objects + type field
-const projectsData = [
-  {
-  title: "OpenGL Renderer",
-  description:
-    "OpenGL renderer built from scratch demonstrating a deep understanding of computer graphics and the graphics pipeline.",
-  image: opneGlGif,
-  github: "https://github.com/ayanchavand/mini-gl-renderer",
-  timeline: "Sep 2025",
-  status: "In Progress",
-  type: "Systems & Graphics", // 🆕 Changed from "Web"
-  tags: [
-    { label: "Systems & Graphics", icon: <FaCube /> }, // 🆕 New tag
-    { label: "C++", icon: <FaCode /> },
-    { label: "OOPs", icon: <FaCode /> },
-    { label: "OpenGL", icon: <FaCube /> },
-  ],
-},
-
-  {
-    title: "Billy Protocol",
-    description:
-      "2.5D puzzle platformer developed solo in 4 days for GMTK Game Jam 2025, ranked in the top 20%. Designed all gameplay systems, created all visual assets, and implemented innovative ghost-creation mechanics to solve environmental puzzles.",
-    image: billy,
-    github: "https://github.com/ayanchavand/billy-protocol",
-    timeline: "Aug 2025",
-    status: "Completed",
-    type: "Game",
-    tags: [
-      { label: "Unity3D", icon: <FaCube /> },
-      { label: "C#", icon: <FaCode /> },
-      { label: "Game Jam", icon: <FaCuttlefish /> },
-      { label: "Puzzle", icon: <FaServer /> },
-    ],
-  },
-  {
-    title: "K.O.",
-    description:
-      "A first-person parkour game inspired by One Punch Man and early PlayStation games. Developed fast-paced mechanics including wall-running and combat, implemented momentum-based movement physics, and designed retro-styled environments and character assets.",
-    image: ko,
-    github: "https://ayanchavand.itch.io/ko",
-    timeline: "Jul 2024",
-    status: "Completed",
-    type: "Game",
-    tags: [
-      { label: "Unity3D", icon: <FaCube /> },
-      { label: "C#", icon: <FaCode /> },
-      { label: "First-Person", icon: <FaCube /> },
-      { label: "Parkour", icon: <FaCuttlefish /> },
-    ],
-  },
-  {
-    title: "DisCat",
-    description:
-      "DisCat is an Android app built with Kotlin that fetches cat and dog images from multiple APIs. It uses Glide for smooth image loading, OkHttp for reliable networking, and Gson for parsing API responses, showcasing modern Android development with a clean, efficient user experience.",
-    image: discat,
-    github: "https://github.com/ayanchavand/discat",
-    timeline: "Jan 2024",
-    status: "Completed",
-    type: "Android",
-    tags: [
-      { label: "Kotlin", icon: <FaCode /> },
-      { label: "Android", icon: <FaCube /> },
-      { label: "API", icon: <FaServer /> },
-    ],
-  },
-  {
-    title: "More Projects Coming Soon",
-    description:
-      "Stay tuned! I’m working on adding more exciting projects to showcase here.",
-    image: more,
-    github: "#",
-    timeline: "Ongoing",
-    status: "In Progress",
-    type: "Web",
-    tags: [
-      { label: "More to Come", icon: <FaCode /> },
-      { label: "Exciting", icon: <FaCube /> },
-    ],
-  },
-];
+import { projectsData } from "../data/projects";
 
 
 const Projects = () => {
@@ -105,12 +20,14 @@ const Projects = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const filters = [
-    { type: "All", icon: <FaLayerGroup /> },
-    { type: "Web", icon: <FaGlobe /> },
-    { type: "Game", icon: <FaGamepad /> },
-    { type: "Android", icon: <FaAndroid /> },
-    { type: "Systems & Graphics", icon: <FaCube /> },
-  ];
+  { type: "All", icon: <FaLayerGroup /> },
+  { type: "Web", icon: <FaGlobe /> },
+  { type: "Game", icon: <FaGamepad /> },
+  { type: "Android", icon: <FaAndroid /> },
+  { type: "Systems & Graphics", icon: <FaCube /> },
+  { type: "Open Source", icon: <FaGithub /> },
+];
+
 
   const filteredProjects =
     filter === "All"
@@ -123,7 +40,7 @@ const Projects = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-4 bg-blue-600 bg-clip-text text-transparent">
-            My Software Projects
+            My Work
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             A collection of my work spanning multiple tech stacks
