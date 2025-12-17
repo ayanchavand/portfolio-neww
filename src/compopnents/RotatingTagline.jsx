@@ -6,7 +6,6 @@ const taglines = [
   "Game Developer 🎮",
   <>
     Open Source Contributor{" "}
-    <span className="max-sm:hidden">[Godot Engine]</span>
     <img
       src="https://raw.githubusercontent.com/godotengine/godot/master/icon.svg"
       alt="Godot"
@@ -15,9 +14,8 @@ const taglines = [
   </>,
   "Philosophy & literature geek 📚",
 
-  // --- fun ones that unlock later ---
-  // unlocked
-  "My mother's son",
+  // --- fun ones that unlock once ---
+  "My parent's son",
   "Homo sapien",
   "Bipedal primate with internet access",
   "Calcium-reinforced jelly organism",
@@ -39,12 +37,12 @@ const taglines = [
 export default function RotatingTagline() {
   const [index, setIndex] = useState(0)
   const [cycles, setCycles] = useState(0)
+  const [funPlayed, setFunPlayed] = useState(false)
 
-  // configurable boundaries
-  const initialIndexEnd = 3              // last "professional" tagline index
-  const cycleThreshold = 2               // how many rotations before revealing the rest
+  const initialIndexEnd = 3      // last professional tagline
+  const cycleThreshold = 2       // loops before fun unlocks
 
-  const unlocked = cycles >= cycleThreshold
+  const unlocked = cycles >= cycleThreshold && !funPlayed
   const maxIndex = unlocked ? taglines.length - 1 : initialIndexEnd
 
   useEffect(() => {
@@ -53,16 +51,22 @@ export default function RotatingTagline() {
         const next = prev + 1
 
         if (next > maxIndex) {
-          // loop completed
-          setCycles((c) => c + 1)
+          if (unlocked) {
+            // fun sequence finished → lock forever
+            setFunPlayed(true)
+            setCycles(0)
+          } else {
+            setCycles((c) => c + 1)
+          }
           return 0
         }
+
         return next
       })
     }, 3000)
 
     return () => clearInterval(id)
-  }, [maxIndex]) // update when unlocked
+  }, [maxIndex, unlocked])
 
   const variants = {
     initial: { opacity: 0, y: 30 },
@@ -74,7 +78,7 @@ export default function RotatingTagline() {
     <div className="overflow-hidden h-[2.5rem] sm:h-[3rem] md:h-[3.5rem]">
       <AnimatePresence mode="wait">
         <motion.p
-          key={index + "-" + unlocked}
+          key={`${index}-${funPlayed}`}
           className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-4 max-w-3xl leading-relaxed font-light"
           variants={variants}
           initial="initial"
