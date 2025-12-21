@@ -4,7 +4,9 @@ import {
   FaServer,
   FaCube,
   FaLayerGroup,
-  FaGithub
+  FaGithub,
+  FaTerminal,
+  FaGlobe
 } from "react-icons/fa";
 
 import opneGlGif from "../assets/projects/opengl-demo.gif";
@@ -13,6 +15,7 @@ import more from "../assets/projects/more-meme.jpg";
 import billy from "../assets/projects/billy.gif";
 import ko from "../assets/projects/ko.gif";
 import discat from "../assets/projects/discat.jpg";
+import vibPreview from "../assets/projects/vib.jpeg";
 
 export const projectsData = [
   {
@@ -78,7 +81,39 @@ export const projectsData = [
       { label: "API", icon: FaServer },
     ],
   },
+  
   {
+  title: "Godot Engine – Open Source Contributions",
+  description:
+    "Featured on Godot’s website for contributions in the Godot 4.3 release, including fixing editor and documentation issues, improving overall editor stability and user experience.",
+  image: godotLogo, // import the Godot logo or use a neutral OSS image
+  github: "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Aayanchavand+is%3Amerged",
+  timeline: "2024 – Present",
+  status: "Ongoing",
+  type: "Open Source",
+  tags: [
+    { label: "Godot Engine", icon: FaCube },
+    { label: "C++", icon: FaCode },
+    { label: "Editor & GUI", icon: FaLayerGroup },
+    { label: "Open Source", icon: FaGithub },
+  ],
+},
+{
+  title: "VIB – Terminal File Browser (TUI)",
+  description:"A fast, cross-platform, keyboard-driven terminal file manager for browsing local files and SMB network shares",
+  image: vibPreview, 
+  github: "https://github.com/ayanchavand/vib",
+  timeline: "2025",
+  status: "In Progress",
+  type: "Systems & Graphics",
+  tags: [
+    { label: "Rust", icon: FaCode },
+    { label: "TUI", icon: FaTerminal },
+    { label: "Systems Programming", icon: FaCube },
+    { label: "Cross-Platform", icon: FaGlobe },
+  ],
+},
+{
     title: "More Projects Coming Soon",
     description:
       "Stay tuned! I’m working on adding more exciting projects.",
@@ -91,21 +126,6 @@ export const projectsData = [
 
     ],
   },
-  {
-  title: "Godot Engine – Open Source Contributions",
-  description:
-    "Contributed to the Godot Engine during personal time. Featured on Godot’s website for contributions in the Godot 4.3 release, including fixing editor documentation issues. Continued contributing toward the upcoming Godot 4.6 release by resolving GUI and editor bugs, improving overall editor stability and user experience.",
-  image: godotLogo, // import the Godot logo or use a neutral OSS image
-  github: "https://github.com/godotengine/godot",
-  timeline: "2024 – Present",
-  status: "Ongoing",
-  type: "Open Source",
-  tags: [
-    { label: "Godot Engine", icon: FaCube },
-    { label: "C++", icon: FaCode },
-    { label: "Editor & GUI", icon: FaLayerGroup },
-    { label: "Open Source", icon: FaGithub },
-  ],
-}
+
 
 ];

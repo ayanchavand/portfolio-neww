@@ -91,11 +91,12 @@ const Projects = () => {
             >
               {/* Image Container with Overlay */}
               <div className="relative overflow-hidden h-56">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+               <img
+  src={project.image}
+  alt={project.title}
+  className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-105"
+/>
+
                 <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300 ${hoveredCard === idx ? 'opacity-100' : 'opacity-0'}`} />
                 
                 {/* Status Badge on Image */}
