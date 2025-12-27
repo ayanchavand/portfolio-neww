@@ -6,7 +6,10 @@ import {
   FaLayerGroup,
   FaGithub,
   FaTerminal,
-  FaGlobe
+  FaGlobe,
+  FaWallet,
+  FaDatabase,
+  FaCheckCircle
 } from "react-icons/fa";
 
 import opneGlGif from "../assets/projects/opengl-demo.gif";
@@ -16,6 +19,7 @@ import billy from "../assets/projects/billy.gif";
 import ko from "../assets/projects/ko.gif";
 import discat from "../assets/projects/discat.jpg";
 import vibPreview from "../assets/projects/vib.jpeg";
+import finmanPreview from "../assets/projects/finman.jpg"
 
 export const projectsData = [
   {
@@ -113,6 +117,21 @@ export const projectsData = [
     { label: "Cross-Platform", icon: FaGlobe },
   ],
 },
+{
+  title: "Finman – Personal Finance Manager",
+  description: "A personal finance management application that helps track transactions, manage budgets, and gain clarity over spending habits. Made using react and firebase",
+  image: finmanPreview,
+  github: "https://github.com/SecondOrder-Labs/FinMan-web-client",
+  timeline: "2025",
+  status: "Completed",
+  type: "Web",
+  tags: [
+    { label: "JS", icon: FaWallet },
+    { label: "Data Management", icon: FaDatabase },
+    { label: "Firebase", icon: FaCheckCircle },
+  ],
+},
+
 {
     title: "More Projects Coming Soon",
     description:
